@@ -107,7 +107,7 @@ html {
     border-color: var(--color-container-border-inactive);
 
     background-color: none;
-    transition: all 0.1s linear;
+    transition: all 0.2s linear;
 }
 
 .navbar-item > a:hover {

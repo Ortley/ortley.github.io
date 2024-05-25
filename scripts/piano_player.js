@@ -14,14 +14,19 @@ class Key {
         this.context = context;
         this.keyNote = keyNote;
         this.isPlaying = false;
-    }
-
-    playNote() {
-        
+        this.wasPlaying = false;
     }
 
     draw() {
-        this.isPlaying = isMouseDown && (mouseKey == this.keyNote);
+        this.wasPlaying = this.isPlaying
+        this.isPlaying = isMouseIn && isMouseDown && (mouseKey == this.keyNote);
+        if (this.isPlaying && !this.wasPlaying){
+            T("sin").play();
+        }
+        else if (!this.isPlaying) {
+            
+        }
+
         this.context.fillStyle = this.isPlaying ? Key.colorInActive : Key.colorActive;
         this.context.fillRect(this.keyNote * (Key.baseWidth + Key.spacing), 0, Key.baseWidth, 50);
     }
@@ -43,10 +48,10 @@ class Piano {
         this.canvas.onmouseleave = () => {
             isMouseIn = false
         };
-        this.canvas.onmousedown = () => {
+        document.onmousedown = () => {
             isMouseDown = true
         };
-        this.canvas.onmouseup = () => {
+        document.onmouseup = () => {
             isMouseDown = false
         };
         this.canvas.addEventListener("mousemove", () => {
