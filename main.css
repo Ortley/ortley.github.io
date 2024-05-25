@@ -1,0 +1,116 @@
+:root {
+    /* margins */
+    --margin-m: 1em;
+
+    --margin-s: calc(var(--margin-m) / 1.618);
+    --margin-xs: calc(var(--margin-s) / 1.618);
+    --margin-xxs: calc(var(--margin-xs) / 1.618);
+
+    --margin-l: calc(var(--margin-m) * 1.618);
+    --margin-xl: calc(var(--margin-l) * 1.618);
+    --margin-xxl: calc(var(--margin-xl) * 1.618);
+
+    /* borders */
+    --border-l : 1em;
+    --border-m: calc(var(--border-l) / 1.618);
+
+    --border-s: calc(var(--border-m) / 1.618);
+    --border-xs: calc(var(--border-s) / 1.618);
+    --border-xxs: calc(var(--border-xs) / 1.618);
+
+    --border-xl: calc(var(--border-l) * 1.618);
+    --border-xxl: calc(var(--border-xl) * 1.618);
+    
+    --border-circle: 50%;
+
+    /* colours */
+    --colour-background: hsl(0, 0%, 7%);
+
+    --colour-content-highest: hsl(0, 0%, 100%);
+    --colour-content-regular: hsl(0, 0%, 90%);
+    --colour-content-lowest: hsl(0, 0%, 80%);
+
+    --color-container: hsl(0, 0%, 14%);
+    --color-container-border-active: hsl(0, 0%, 80%);
+    --color-container-border-inactive: hsl(0, 0%, 14%);
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+
+html {
+    color: var(--colour-content-regular);
+    font-family: montserrat;
+    font-variation-settings: "wght" 500;
+
+    background-color: var(--colour-background);
+}
+
+
+.invisible {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+
+.content-highest {
+    color: var(--colour-content-highest);
+    font-variation-settings: "wght" 700;
+    font-size: x-large;
+}
+
+.content-regular {
+    color: var(--colour-content-regular);
+    font-variation-settings: "wght" 500;
+    font-size: medium;
+}
+
+.content-lowest {
+    color: var(--colour-content-lowest);
+    font-variation-settings: "wght" 300;
+    font-size: x-small;
+}
+
+
+.navbar-container {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    flex-direction: row;
+
+    padding: var(--margin-m);
+    border-bottom: 1px solid white;
+}
+
+.navbar-item {
+    margin: 0 var(--margin-m);
+    padding: var(--margin-xxs);
+}
+
+.navbar-item > a {
+    text-decoration-line: none;
+    color: var(--colour-content-highest);
+
+    padding: var(--border-xs);
+    border-radius: var(--border-xxs);
+    border-width: 0.07em;
+    border-style: solid;
+    border-color: var(--color-container-border-inactive);
+
+    background-color: none;
+    transition: all 0.1s linear;
+}
+
+.navbar-item > a:hover {
+    background-color: var(--color-container);
+    border-color: var(--color-container-border-active);
+}
