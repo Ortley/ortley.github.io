@@ -1,9 +1,10 @@
 let isMouseDown = false;
+let isMouseIn = false;
 let mousePosition = [0, 0];
 let mouseKey = 0;
 
 class Key {
-    static baseWidth = 10;
+    static baseWidth = 50;
     static spacing = 1;
     static colorActive = "#ffffff";
     static colorInActive = "#999999";
@@ -33,10 +34,25 @@ class Piano {
     constructor (canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.context = this.canvas.getContext("2d");
+        this.boundingBox = this.canvas.getBoundingClientRect();
+        console.log(this.boundingBox);
 
-        this.canvas.addEventListener("mousedown", this.mouseDown.bind(this));
-        this.canvas.addEventListener("mouseup", this.mouseUp.bind(this));
-        this.canvas.addEventListener("mousemove", this.mouseMove.bind(this));
+        this.canvas.onmouseenter = () => {
+            isMouseIn = true
+        };
+        this.canvas.onmouseleave = () => {
+            isMouseIn = false
+        };
+        this.canvas.onmousedown = () => {
+            isMouseDown = true
+        };
+        this.canvas.onmouseup = () => {
+            isMouseDown = false
+        };
+        this.canvas.addEventListener("mousemove", () => {
+            this.mouseMove(event)
+        });
+
 
         this.keyObjects = [];
         this.createKeys();
@@ -62,8 +78,8 @@ class Piano {
     }
 
     mouseMove(event) {
-        mousePosition = [event.clientX, event.clientY];
-        mouseKey = Math.floor(mousePosition[0] / (Key.baseWidth + Key.spacing) - 0.5);
+        mousePosition = [event.clientX - this.boundingBox.left, event.clientY - this.boundingBox.top];
+        mouseKey = Math.floor(mousePosition[0] / (Key.baseWidth + Key.spacing));
     }
 
     loop() {
