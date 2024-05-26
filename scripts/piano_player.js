@@ -1,13 +1,13 @@
+let toneKey = '<div class="tone-key"></div>';
 
+window.addEventListener("DOMContentLoaded", function () {
+	let keyHtml = "<p>Hello World!</p>";
+	let container = document.getElementById("pianoContainer");
+	let toneContainer = document.getElementById("pianoTone");
+	let semitoneContainer = document.getElementById("pianoSemitone");
 
+	toneContainer.innerHTML += toneKey;
+	semitoneContainer.innerHTML = +toneKey;
 
-window.addEventListener("DOMContentLoaded", function() {
-    let keyHtml = "<p>Hello World!</p>";
-    let container = document.getElementById("pianoContainer");
-    
-    console.log(keyHtml);
-    console.log(container);
-    console.log(container.innerHTML);
-    
-    container.innerHTML += keyHtml;
+	console.log(container.childNodes);
 });
