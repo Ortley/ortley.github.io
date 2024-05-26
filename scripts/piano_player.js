@@ -1,7 +1,51 @@
-let isMouseDown = false;
-let isMouseIn = false;
-let mousePosition = [0, 0];
-let mouseKey = 0;
+var isMouseDown = false;
+var isMouseIn = false;
+var mousePosition = [0, 0];
+var mouseKey = 0;
+
+
+class Note {
+    static c4 = 261.63;
+    constructor(noteNum) {
+        this.audioCtx = new(window.AudioContext || window.webkitAudioContext);
+        this.note = noteNum;
+        this.oscillator = this.audioCtx.createOscillator();
+
+        this.oscillator.type = "square";
+        this.oscillator.frequency.value = this.noteToFrequency(this.note);
+        this.oscillator.connect(this.audioCtx.destination);
+        /* this.oscillator.start(); */
+    }
+
+    noteToFrequency(note) {
+        return Note.c4 * Math.pow(2, (note - 60) / 12);
+    }
+
+    play() {
+        this.oscillator.start();
+    }
+    stop() {
+        this.oscillator.stop();
+    }
+}
+
+
+/* function playFrequency(freq, time) {
+    var oscillator = audioCtx.createOscillator;
+
+    oscillator.type = 'square';
+    oscillator.frequency.value = frequency; // value in hertz
+    oscillator.connect(audioCtx.destination);
+    oscillator.start();
+  
+    setTimeout(
+        function() {
+            oscillator.stop();
+            playMelody();
+        }, duration
+    );
+}
+ */
 
 class Key {
     static baseWidth = 50;
@@ -15,16 +59,17 @@ class Key {
         this.keyNote = keyNote;
         this.isPlaying = false;
         this.wasPlaying = false;
+        this.player = new Note(keyNote);
     }
 
     draw() {
         this.wasPlaying = this.isPlaying
         this.isPlaying = isMouseIn && isMouseDown && (mouseKey == this.keyNote);
         if (this.isPlaying && !this.wasPlaying){
-            T("sin").play();
+            this.player.play();
         }
         else if (!this.isPlaying) {
-            
+            this.player.play();
         }
 
         this.context.fillStyle = this.isPlaying ? Key.colorInActive : Key.colorActive;
@@ -40,7 +85,7 @@ class Piano {
         this.canvas = document.getElementById(canvasId);
         this.context = this.canvas.getContext("2d");
         this.boundingBox = this.canvas.getBoundingClientRect();
-        console.log(this.boundingBox);
+        /* console.log(this.boundingBox); */
 
         this.canvas.onmouseenter = () => {
             isMouseIn = true
@@ -94,11 +139,14 @@ class Piano {
         }
         setTimeout(() => {
             window.requestAnimationFrame(() => this.loop());
-        }, 0);
+        }, 50);
     }
 }
 
 window.onload = function() {
+    document.getElementById("pianoCanvas").addEventListener("mousedown", startPiano, {once : true});
+}
+
+function startPiano() {
     let piano = new Piano("pianoCanvas");
-    console.log(mousePosition);
 }
