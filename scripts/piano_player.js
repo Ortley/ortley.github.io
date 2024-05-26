@@ -14,6 +14,8 @@ class Note {
         this.oscillator.type = "square";
         this.oscillator.frequency.value = this.noteToFrequency(this.note);
         this.oscillator.connect(this.audioCtx.destination);
+
+        this.active = false;
         /* this.oscillator.start(); */
     }
 
@@ -22,10 +24,14 @@ class Note {
     }
 
     play() {
-        this.oscillator.start();
+        if (!this.active) {
+            this.oscillator.start();}
+        this.active = true;
     }
     stop() {
-        this.oscillator.stop();
+        if (this.active) {
+            this.oscillator.stop();}
+        this.active = false;
     }
 }
 
@@ -65,12 +71,7 @@ class Key {
     draw() {
         this.wasPlaying = this.isPlaying
         this.isPlaying = isMouseIn && isMouseDown && (mouseKey == this.keyNote);
-        if (this.isPlaying && !this.wasPlaying){
-            this.player.play();
-        }
-        else if (!this.isPlaying) {
-            this.player.play();
-        }
+
 
         this.context.fillStyle = this.isPlaying ? Key.colorInActive : Key.colorActive;
         this.context.fillRect(this.keyNote * (Key.baseWidth + Key.spacing), 0, Key.baseWidth, 50);
@@ -139,7 +140,7 @@ class Piano {
         }
         setTimeout(() => {
             window.requestAnimationFrame(() => this.loop());
-        }, 50);
+        }, 10);
     }
 }
 
