@@ -33,6 +33,13 @@
 	--color-container: hsl(0, 0%, 14%);
 	--color-container-border-active: hsl(0, 0%, 80%);
 	--color-container-border-inactive: hsl(0, 0%, 14%);
+
+
+	--tone-key-width: 50px;
+	--semitone-key-width: calc(var(--tone-key-width) / 2);
+
+	--tone-key-height: 20vh;
+	--semitone-key-height: calc(var(--tone-key-height) / 2);
 }
 
 @font-face {
@@ -109,4 +116,48 @@ html {
 .navbar-item > a:hover {
 	background-color: var(--color-container);
 	border-color: var(--color-container-border-active);
+}
+
+
+.piano-container {
+	display: grid;
+}
+
+.piano-tone {
+	display: flex;
+	grid-row: 1;
+	grid-column: 1;
+	gap: 2px;
+	flex-direction: row;
+}
+
+.piano-semitone {
+	display: flex;
+	grid-row: 1;
+	grid-column: 1;
+	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 2px);
+	flex-direction: row;
+}
+
+.tone-key {
+	width: var(--tone-key-width);
+	height: var(--tone-key-height);
+	background-color: rgb(255, 255, 255);
+	transition: all 0.2s linear;
+}
+
+.semitone-key {
+	width: var(--semitone-key-width);
+	height: var(--semitone-key-height);
+	background-color: black;
+	transform: translateX(150%);
+	transition: all 0.2s linear;
+}
+
+.placeholder-key {
+	background-color: #0000;
+}
+
+.hover {
+	background-color: green;
 }
