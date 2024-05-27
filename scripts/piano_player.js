@@ -26,21 +26,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			semitoneContainer.innerHTML += semitoneKeyHTML;
 		}
 	}
-
-	toneContainer.lastElementChild.classList.add("hover");
-	toneContainer.lastElementChild.addEventListener(
-		"mouseover",
-		(event) => {
-			console.log("ok")
-		},
-		false
-	);
-
-	toneContainer.addEventListener(
-		"mouseover",
-		(event) => {
-			console.log(event)
-		},
-		false
-	);
 });
