@@ -35,13 +35,12 @@
 	--col-container-border-inactive: hsl(0, 0%, 14%);
 
 	--col-tone: hsl(47, 100%, 92%);
+	--col-tone-hover: hsl(48, 100%, 96%);
+	--col-tone-active: hsl(47, 100%, 88%);
+
 	--col-semitone: hsl(0, 0%, 10%);
-
-	--col-tone-hover: hsl(48, 100%, 50%);
 	--col-semitone-hover: hsl(0, 0%, 20%);
-
-	--col-tone-active: hsl(0, 0%, 0%);
-	--col-semitone-active: hsl(0, 0%, 10%);
+	--col-semitone-active: hsl(0, 0%, 0%);
 
 	
 	--tone-key-width: 50px;
@@ -134,6 +133,7 @@ html {
 }
 
 .piano-tone {
+	pointer-events: none;
 	display: flex;
 	grid-row: 1;
 	grid-column: 1;
@@ -142,6 +142,7 @@ html {
 }
 
 .piano-semitone {
+	pointer-events: none;
 	display: flex;
 	grid-row: 1;
 	grid-column: 1;
@@ -150,13 +151,16 @@ html {
 }
 
 .tone-key {
+	pointer-events: all;
 	width: var(--tone-key-width);
 	height: var(--tone-key-height);
 	background-color: var(--col-tone);
-	transition: all 0.2s linear;
+	border-radius: 0px 0px 5px 5px;
+	transition: all 0.1s ease-in;
 }
 
 .semitone-key {
+	pointer-events: all;
 	width: var(--semitone-key-width);
 	height: var(--semitone-key-height);
 	background-color: var(--col-semitone);

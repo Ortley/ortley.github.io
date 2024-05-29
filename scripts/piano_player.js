@@ -1,10 +1,15 @@
 const toneKeyHTML = '<div class="tone-key"></div>';
 const semitoneKeyHTML = '<div class="semitone-key"></div>';
 const placeholderSemitoneKeyHTML = '<div class="semitone-key placeholder-key"></div>';
+var mouseClick = false;
+var activeKey = -1;
 
-document.addEventListener("mouseover", (event) => {
-	console.log(event.target);
-})
+document.addEventListener("mousedown", (event) => {
+	mouseClick = true;
+});
+document.addEventListener("mouseup", (event) => {
+	mouseClick = false;
+});
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	let container = document.getElementById("pianoContainer");
@@ -22,12 +27,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		};
 	};
 
-	toneContainer.querySelectorAll(".tone-key").forEach((element) => {
+	toneContainer.querySelectorAll(".tone-key").forEach((element, index) => {
 		element.addEventListener("mouseover", (event) => {
 			element.classList.add("hover");
+			if (mouseClick == true) {
+				element.classList.add("active");
+				activeKey = index;
+			};
 		});
 		element.addEventListener("mousedown", (event) => {
 			element.classList.add("active");
+			activeKey = index;
 		})
 		element.addEventListener("mouseup", (event) => {
 			element.classList.remove("active");
@@ -38,12 +48,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		});
 	});
 
-	semitoneContainer.querySelectorAll(".semitone-key:not(.placeholder-key)").forEach(element => {
+	semitoneContainer.querySelectorAll(".semitone-key:not(.placeholder-key)").forEach((element, index) => {
 		element.addEventListener("mouseover", (event) => {
 			element.classList.add("hover");
+			if (mouseClick == true) {
+				element.classList.add("active");
+				activeKey = index;
+
+			};
 		});
 		element.addEventListener("mousedown", (event) => {
 			element.classList.add("active");
+			activeKey = index;
 		})
 		element.addEventListener("mouseup", (event) => {
 			element.classList.remove("active");
