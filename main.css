@@ -24,22 +24,31 @@
 	--border-circle: 50%;
 
 	/* colours */
-	--colour-background: hsl(0, 0%, 7%);
+	--col-background: hsl(0, 0%, 7%);
 
-	--colour-content-highest: hsl(0, 0%, 100%);
-	--colour-content-regular: hsl(0, 0%, 90%);
-	--colour-content-lowest: hsl(0, 0%, 80%);
+	--col-content-highest: hsl(0, 0%, 100%);
+	--col-content-regular: hsl(0, 0%, 90%);
+	--col-content-lowest: hsl(0, 0%, 80%);
 
-	--color-container: hsl(0, 0%, 14%);
-	--color-container-border-active: hsl(0, 0%, 80%);
-	--color-container-border-inactive: hsl(0, 0%, 14%);
+	--col-container: hsl(0, 0%, 14%);
+	--col-container-border-active: hsl(0, 0%, 80%);
+	--col-container-border-inactive: hsl(0, 0%, 14%);
 
+	--col-tone: hsl(47, 100%, 92%);
+	--col-semitone: hsl(0, 0%, 10%);
 
+	--col-tone-hover: hsl(48, 100%, 50%);
+	--col-semitone-hover: hsl(0, 0%, 20%);
+
+	--col-tone-active: hsl(0, 0%, 0%);
+	--col-semitone-active: hsl(0, 0%, 10%);
+
+	
 	--tone-key-width: 50px;
-	--semitone-key-width: calc(var(--tone-key-width) / 2);
+	--semitone-key-width: calc(var(--tone-key-width) * 0.6);
 
-	--tone-key-height: 20vh;
-	--semitone-key-height: calc(var(--tone-key-height) / 2);
+	--tone-key-height: 30vh;
+	--semitone-key-height: calc(var(--tone-key-height) * 0.6);
 }
 
 @font-face {
@@ -48,11 +57,11 @@
 }
 
 html {
-	color: var(--colour-content-regular);
+	color: var(--col-content-regular);
 	font-family: montserrat;
 	font-variation-settings: "wght" 500;
 
-	background-color: var(--colour-background);
+	background-color: var(--col-background);
 }
 
 .invisible {
@@ -64,19 +73,19 @@ html {
 }
 
 .content-highest {
-	color: var(--colour-content-highest);
+	color: var(--col-content-highest);
 	font-variation-settings: "wght" 700;
 	font-size: x-large;
 }
 
 .content-regular {
-	color: var(--colour-content-regular);
+	color: var(--col-content-regular);
 	font-variation-settings: "wght" 500;
 	font-size: medium;
 }
 
 .content-lowest {
-	color: var(--colour-content-lowest);
+	color: var(--col-content-lowest);
 	font-variation-settings: "wght" 300;
 	font-size: x-small;
 }
@@ -101,26 +110,27 @@ html {
 
 .navbar-item > a {
 	text-decoration-line: none;
-	color: var(--colour-content-highest);
+	color: var(--col-content-highest);
 
 	padding: var(--border-xs);
 	border-radius: var(--border-xxs);
 	border-width: 0.07em;
 	border-style: solid;
-	border-color: var(--color-container-border-inactive);
+	border-color: var(--col-container-border-inactive);
 
 	background-color: none;
 	transition: all 0.2s linear;
 }
 
 .navbar-item > a:hover {
-	background-color: var(--color-container);
-	border-color: var(--color-container-border-active);
+	background-color: var(--col-container);
+	border-color: var(--col-container-border-active);
 }
 
 
 .piano-container {
 	display: grid;
+	user-select: none;
 }
 
 .piano-tone {
@@ -142,22 +152,33 @@ html {
 .tone-key {
 	width: var(--tone-key-width);
 	height: var(--tone-key-height);
-	background-color: rgb(255, 255, 255);
+	background-color: var(--col-tone);
 	transition: all 0.2s linear;
 }
 
 .semitone-key {
 	width: var(--semitone-key-width);
 	height: var(--semitone-key-height);
-	background-color: black;
-	transform: translateX(150%);
-	transition: all 0.2s linear;
+	background-color: var(--col-semitone);
+	transform: translateX(calc(var(--tone-key-width) - var(--semitone-key-width) / 2));
+	border-radius: 0px 0px 5px 5px;
+	transition: all 0.1s ease-in;
 }
 
 .placeholder-key {
-	background-color: #0000;
+	visibility: hidden;
 }
 
-.hover {
-	background-color: green;
+.semitone-key.hover {
+	background-color: var(--col-semitone-hover);
+}
+.tone-key.hover {
+	background-color: var(--col-tone-hover);
+}
+
+.semitone-key.active {
+	background-color: var(--col-semitone-active);
+}
+.tone-key.active {
+	background-color: var(--col-tone-active);
 }
