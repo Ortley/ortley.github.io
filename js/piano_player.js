@@ -31,12 +31,14 @@ window.onload = function() {
 			var note = 60; // the MIDI note
 			var velocity = 127; // how hard the note hits
 			// play the note
-			MIDI.setVolume(0, 127);
+			MIDI.setVolume(127, 127);
 			MIDI.noteOn(0, note, velocity, delay);
 			MIDI.noteOff(0, note, delay + 0.75);
 		}
 	});
 };
+
+
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	let container = document.getElementById("pianoContainer");
@@ -59,11 +61,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			element.classList.add("hover");
 			if (mouseClick == true) {
 				element.classList.add("active");
-				activeKey = indexToMidi[index % 7] + Math.floor(index / 7) * 12;
+				activeKey = indexToMidi[index % 7] + Math.floor(index / 7) * 12 + 60;
 			};
 		});
 		element.addEventListener("mousedown", (e) => {
 			element.classList.add("active");
+			activeKey = indexToMidi[index % 7] + Math.floor(index / 7) * 12 + 60;
+			newKey();
 		});
 		element.addEventListener("mouseup", (e) => {
 			element.classList.remove("active");
@@ -79,11 +83,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			element.classList.add("hover");
 			if (mouseClick == true) {
 				element.classList.add("active");
-				activeKey = indexToMidi[(index + 0.5) % 7] + Math.floor((index + 0.5) / 7) * 12;
+				activeKey = indexToMidi[(index + 0.5) % 7] + Math.floor((index + 0.5) / 7) * 12 + 60;
 			};
 		});
 		element.addEventListener("mousedown", (e) => {
 			element.classList.add("active");
+			newKey();
 		});
 		element.addEventListener("mouseup", (e) => {
 			element.classList.remove("active");
@@ -103,10 +108,18 @@ document.onmouseup = function() {
 };
 document.onmousemove = function() {
 	if (activeKey != previousKey) {
-		if (MIDI.start) {
-			MIDI.start();
-			console.log("ok")
-		};
+		newKey();
 	};
 	previousKey = activeKey;
+};
+
+
+function playNote( note, velocity) {
+	MIDI.setVolume(127, 127);
+	MIDI.noteOn(0, note, velocity, 0);
+	MIDI.noteOff(0, note, 2.0);
+	console.log(note)
+}
+function newKey() {
+	playNote(activeKey, 127);
 };

@@ -35,8 +35,8 @@
 	--col-container-border-inactive: hsl(0, 0%, 14%);
 
 	--col-tone: hsl(47, 100%, 92%);
-	--col-tone-hover: hsl(48, 100%, 96%);
-	--col-tone-active: hsl(47, 100%, 88%);
+	--col-tone-hover: hsl(47, 45%, 84%);
+	--col-tone-active: hsl(54, 23%, 75%);
 
 	--col-semitone: hsl(0, 0%, 10%);
 	--col-semitone-hover: hsl(0, 0%, 20%);
