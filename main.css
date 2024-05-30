@@ -156,7 +156,7 @@ html {
 	height: var(--tone-key-height);
 	background-color: var(--col-tone);
 	border-radius: 0px 0px 5px 5px;
-	transition: all 0.1s ease-in;
+	transition: all 0.05s ease-in;
 }
 
 .semitone-key {
@@ -166,7 +166,7 @@ html {
 	background-color: var(--col-semitone);
 	transform: translateX(calc(var(--tone-key-width) - var(--semitone-key-width) / 2));
 	border-radius: 0px 0px 5px 5px;
-	transition: all 0.1s ease-in;
+	transition: all 0.05s ease-in;
 }
 
 .placeholder-key {
