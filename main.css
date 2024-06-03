@@ -39,8 +39,8 @@
 	--col-tone-active: hsl(54, 23%, 75%);
 
 	--col-semitone: hsl(0, 0%, 10%);
-	--col-semitone-hover: hsl(0, 0%, 20%);
-	--col-semitone-active: hsl(0, 0%, 0%);
+	--col-semitone-hover: hsl(0, 0%, 17%);
+	--col-semitone-active: hsl(0, 0%, 25%);
 
 	
 	--tone-key-width: 50px;
@@ -130,6 +130,10 @@ html {
 .piano-container {
 	display: grid;
 	user-select: none;
+	width: min-content;
+	margin: auto;
+	transform: translateY(25vh);
+	color: black;
 }
 
 .piano-tone {
@@ -140,6 +144,7 @@ html {
 	gap: 2px;
 	flex-direction: row;
 }
+
 
 .piano-semitone {
 	pointer-events: none;
@@ -156,7 +161,16 @@ html {
 	height: var(--tone-key-height);
 	background-color: var(--col-tone);
 	border-radius: 0px 0px 5px 5px;
-	transition: all 0.05s ease-in;
+	/* transition: all 0.05s ease-in; */
+	align-content: end;
+}
+
+
+.tone-key:first-child{
+	border-radius: 5px 0px 5px 5px;
+}
+.tone-key:last-child{
+	border-radius: 0px 5px 5px 5px;
 }
 
 .semitone-key {
@@ -166,7 +180,9 @@ html {
 	background-color: var(--col-semitone);
 	transform: translateX(calc(var(--tone-key-width) - var(--semitone-key-width) / 2));
 	border-radius: 0px 0px 5px 5px;
-	transition: all 0.05s ease-in;
+	/* transition: all 0.05s ease-in; */
+	align-content: end;
+	color: white;
 }
 
 .placeholder-key {
@@ -185,4 +201,7 @@ html {
 }
 .tone-key.active {
 	background-color: var(--col-tone-active);
+}
+.active {
+	box-shadow: inset 5px white;
 }

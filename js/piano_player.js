@@ -27,6 +27,7 @@ window.onload = function() {
 			console.log(state, progress);
 		},
 		onsuccess: function() {
+			console.log("ok")
 			var delay = 0.25; // play one note every quarter second
 			var note = 60; // the MIDI note
 			var velocity = 127; // how hard the note hits
@@ -38,21 +39,25 @@ window.onload = function() {
 	});
 };
 
+window.addEventListener("DOMContentLoaded", () => {
+	generatePiano(60, 72)
+})
 
-
-window.addEventListener("DOMContentLoaded", (event) => {
+function generatePiano(from, to) {
 	let container = document.getElementById("pianoContainer");
 	let toneContainer = document.getElementById("pianoTone");
 	let semitoneContainer = document.getElementById("pianoSemitone");
 
-	for (n = 0; n < 21; n++) {
+	for (n = from; n < to; n++) {
 		toneContainer.innerHTML += toneKeyHTML;
+		toneContainer.lastChild.innerHTML = n;
 
-		if ((n % 7) == 2 || (n % 7) == 6){
+		if (((n - 60) % 7) == 2 || ((n - 60) % 7) == 6){
 			semitoneContainer.innerHTML += placeholderSemitoneKeyHTML;
 		}
 		else {
 			semitoneContainer.innerHTML += semitoneKeyHTML;
+			semitoneContainer.lastChild.innerHTML = n;
 		};
 	};
 
@@ -64,6 +69,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				activeKey = indexToMidi[index % 7] + Math.floor(index / 7) * 12 + 60;
 			};
 		});
+		element.addEventListener("mouseenter", (e) => {
+			if (mouseClick == true) {
+				newKey();
+			}
+		})
 		element.addEventListener("mousedown", (e) => {
 			element.classList.add("active");
 			activeKey = indexToMidi[index % 7] + Math.floor(index / 7) * 12 + 60;
@@ -86,8 +96,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				activeKey = indexToMidi[(index + 0.5) % 7] + Math.floor((index + 0.5) / 7) * 12 + 60;
 			};
 		});
+		element.addEventListener("mouseenter", (e) => {
+			if (mouseClick == true) {
+				newKey();
+			}
+		})
 		element.addEventListener("mousedown", (e) => {
 			element.classList.add("active");
+			activeKey = indexToMidi[(index + 0.5) % 7] + Math.floor((index + 0.5) / 7) * 12 + 60;
 			newKey();
 		});
 		element.addEventListener("mouseup", (e) => {
@@ -98,7 +114,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			element.classList.remove("active");
 		});
 	});
-});
+}
 
 document.onmousedown = function() {
 	mouseClick = true;
@@ -106,20 +122,19 @@ document.onmousedown = function() {
 document.onmouseup = function() {
 	mouseClick = false;
 };
-document.onmousemove = function() {
+/* document.onmousemove = function() {
 	if (activeKey != previousKey) {
 		newKey();
 	};
 	previousKey = activeKey;
-};
+}; */
 
 
-function playNote( note, velocity) {
+function playNote(note, velocity) {
 	MIDI.setVolume(127, 127);
 	MIDI.noteOn(0, note, velocity, 0);
 	MIDI.noteOff(0, note, 2.0);
-	console.log(note)
 }
 function newKey() {
-	playNote(activeKey, 127);
+	playNote(activeKey, 511);
 };
