@@ -48,6 +48,8 @@
 
 	--tone-key-height: 30vh;
 	--semitone-key-height: calc(var(--tone-key-height) * 0.6);
+
+	--semitone-key-spacing: calc(var(--tone-key-width) - var(--semitone-key-width) / 2);
 }
 
 @font-face {
@@ -153,7 +155,11 @@ html {
 	grid-column: 1;
 	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 2px);
 	flex-direction: row;
+	position: relative;
+	top: -1px;
 }
+
+
 
 .tone-key {
 	pointer-events: all;
@@ -178,8 +184,8 @@ html {
 	width: var(--semitone-key-width);
 	height: var(--semitone-key-height);
 	background-color: var(--col-semitone);
-	transform: translateX(calc(var(--tone-key-width) - var(--semitone-key-width) / 2));
 	border-radius: 0px 0px 5px 5px;
+	transform: translateX(var(--semitone-key-spacing));
 	/* transition: all 0.05s ease-in; */
 	align-content: end;
 	color: white;
