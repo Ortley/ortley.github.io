@@ -13,21 +13,11 @@ window.onload = function() {
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
-		/* onsuccess: function() {
-			console.log("ok")
-			var delay = 0.25; // play one note every quarter second
-			var note = 60; // the MIDI note
-			var velocity = 127; // how hard the note hits
-			// play the note
-			MIDI.setVolume(127, 127);
-			MIDI.noteOn(0, note, velocity, delay);
-			MIDI.noteOff(0, note, delay + 0.75);
-		} */
 	});
 };
 
 window.addEventListener("DOMContentLoaded", () => {
-	generatePiano(60, 84)
+	generatePiano(21, 108);
 })
 
 function generatePiano(from, to) {

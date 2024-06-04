@@ -132,10 +132,15 @@ html {
 .piano-container {
 	display: grid;
 	user-select: none;
-	width: min-content;
+	width: 80%;
 	margin: auto;
 	transform: translateY(25vh);
 	color: black;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border-radius: 5px 5px 5px 5px;
+	padding-bottom: 50px;
+	scrollbar-arrow-color: #0000;
 }
 
 .piano-tone {
@@ -155,11 +160,7 @@ html {
 	grid-column: 1;
 	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 2px);
 	flex-direction: row;
-	position: relative;
-	top: -1px;
 }
-
-
 
 .tone-key {
 	pointer-events: all;
@@ -189,6 +190,8 @@ html {
 	/* transition: all 0.05s ease-in; */
 	align-content: end;
 	color: white;
+	position: relative;
+	top: 5px;
 }
 
 .placeholder-key {
