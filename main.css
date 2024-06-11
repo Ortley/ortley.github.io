@@ -128,21 +128,22 @@ html {
 	border-color: var(--col-container-border-active);
 }
 
-
 .piano-container {
 	display: grid;
 	user-select: none;
-	width: 80%;
-	margin: auto;
-	transform: translateY(25vh);
 	color: black;
 	overflow-x: auto;
+
+	align-content: center;
+	margin: 5em auto 0;
+	
+	width: 80%;
 	border-radius: 5px 5px 5px 5px;
-	padding-bottom: 50px;
+	padding-bottom: 10px;
 }
 .piano-container::-webkit-scrollbar {
 	border-radius: 1em;
-	background-color: none;
+	background: none;
 	border: 0.05em solid white;
 	width: 1em;
 	height: 1em;
