@@ -43,7 +43,7 @@
 	--col-semitone-active: hsl(0, 0%, 25%);
 
 	
-	--tone-key-width: 3.14em;
+	--tone-key-width: 3.1em;
 	--semitone-key-width: calc(var(--tone-key-width) * 0.6);
 
 	--tone-key-height: 17em;
