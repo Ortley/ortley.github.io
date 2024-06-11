@@ -43,10 +43,10 @@
 	--col-semitone-active: hsl(0, 0%, 25%);
 
 	
-	--tone-key-width: 50px;
+	--tone-key-width: 3.14em;
 	--semitone-key-width: calc(var(--tone-key-width) * 0.6);
 
-	--tone-key-height: 30vh;
+	--tone-key-height: 17em;
 	--semitone-key-height: calc(var(--tone-key-height) * 0.6);
 
 	--semitone-key-spacing: calc(var(--tone-key-width) - var(--semitone-key-width) / 2);
@@ -137,10 +137,20 @@ html {
 	transform: translateY(25vh);
 	color: black;
 	overflow-x: auto;
-	overflow-y: hidden;
 	border-radius: 5px 5px 5px 5px;
 	padding-bottom: 50px;
-	scrollbar-arrow-color: #0000;
+}
+.piano-container::-webkit-scrollbar, 
+.piano-container::-webkit-scrollbar:horizontal {
+	border-radius: 1em;
+	background-color: none;
+	border: 0.05em solid white;
+	width: 1em;
+	height: 1em;
+}
+.piano-container::-webkit-scrollbar-thumb {
+	border-radius: 1em;
+	background-color: white;
 }
 
 .piano-tone {
@@ -148,7 +158,7 @@ html {
 	display: flex;
 	grid-row: 1;
 	grid-column: 1;
-	gap: 2px;
+	gap: 0.1em;
 	flex-direction: row;
 }
 
@@ -158,7 +168,7 @@ html {
 	display: flex;
 	grid-row: 1;
 	grid-column: 1;
-	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 2px);
+	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 0.1em);
 	flex-direction: row;
 }
 
@@ -190,8 +200,6 @@ html {
 	/* transition: all 0.05s ease-in; */
 	align-content: end;
 	color: white;
-	position: relative;
-	top: 5px;
 }
 
 .placeholder-key {
