@@ -92,6 +92,8 @@ function generatePiano(from, to) {
 			element.classList.remove("active");
 		});
 	});
+
+	container.scrollBy(container.scrollWidth / 2 - container.offsetWidth/2, 0)
 }
 
 document.onmousedown = function() {
@@ -100,12 +102,6 @@ document.onmousedown = function() {
 document.onmouseup = function() {
 	mouseClick = false;
 };
-/* document.onmousemove = function() {
-	if (activeKey != previousKey) {
-		newKey();
-	};
-	previousKey = activeKey;
-}; */
 
 
 function playNote(note, velocity) {

@@ -140,8 +140,7 @@ html {
 	border-radius: 5px 5px 5px 5px;
 	padding-bottom: 50px;
 }
-.piano-container::-webkit-scrollbar, 
-.piano-container::-webkit-scrollbar:horizontal {
+.piano-container::-webkit-scrollbar {
 	border-radius: 1em;
 	background-color: none;
 	border: 0.05em solid white;
