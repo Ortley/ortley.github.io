@@ -40,60 +40,14 @@ function generatePiano(from, to) {
 	}
 
 	toneContainer.querySelectorAll(".tone-key").forEach((element, index) => {
-		element.addEventListener("mouseover", (e) => {
-			element.classList.add("hover");
-			if (mouseClick == true) {
-				element.classList.add("active");
-				activeKey = element.innerHTML;
-			};
-		});
-		element.addEventListener("mouseenter", (e) => {
-			if (mouseClick == true) {
-				newKey();
-			}
-		})
-		element.addEventListener("mousedown", (e) => {
-			element.classList.add("active");
-			activeKey = element.innerHTML;
-			newKey();
-		});
-		element.addEventListener("mouseup", (e) => {
-			element.classList.remove("active");
-		});
-		element.addEventListener("mouseout", (e) => {
-			element.classList.remove("hover");
-			element.classList.remove("active");
-		});
+		configureKey(element)
 	});
 
 	semitoneContainer.querySelectorAll(".semitone-key").forEach((element, index) => {
-		element.addEventListener("mouseover", (e) => {
-			element.classList.add("hover");
-			if (mouseClick == true) {
-				element.classList.add("active");
-				activeKey = element.innerHTML;
-			};
-		});
-		element.addEventListener("mouseenter", (e) => {
-			if (mouseClick == true) {
-				newKey();
-			}
-		})
-		element.addEventListener("mousedown", (e) => {
-			element.classList.add("active");
-			activeKey = element.innerHTML;
-			newKey();
-		});
-		element.addEventListener("mouseup", (e) => {
-			element.classList.remove("active");
-		});
-		element.addEventListener("mouseout", (e) => {
-			element.classList.remove("hover");
-			element.classList.remove("active");
-		});
+		configureKey(element)
 	});
 
-	container.scrollBy(container.scrollWidth / 2 - container.offsetWidth/2, 0)
+	scrollToCenter(container);
 }
 
 document.onmousedown = function() {
@@ -103,6 +57,39 @@ document.onmouseup = function() {
 	mouseClick = false;
 };
 
+function scrollToCenter(container) {
+	console.log("resize", container)
+	container.scrollBy(-999999, -999999);
+	container.scrollBy(container.scrollWidth / 2 - container.offsetWidth / 2, 
+			container.scrollHeight / 2 - container.offsetHeight / 2);
+}
+
+function configureKey(element) {
+	element.addEventListener("mouseover", (e) => {
+		element.classList.add("hover");
+		if (mouseClick == true) {
+			element.classList.add("active");
+			activeKey = element.innerHTML;
+		};
+	});
+	element.addEventListener("mouseenter", (e) => {
+		if (mouseClick == true) {
+			newKey();
+		}
+	})
+	element.addEventListener("mousedown", (e) => {
+		element.classList.add("active");
+		activeKey = element.innerHTML;
+		newKey();
+	});
+	element.addEventListener("mouseup", (e) => {
+		element.classList.remove("active");
+	});
+	element.addEventListener("mouseout", (e) => {
+		element.classList.remove("hover");
+		element.classList.remove("active");
+	});
+}
 
 function playNote(note, velocity) {
 	MIDI.setVolume(127, 127);
