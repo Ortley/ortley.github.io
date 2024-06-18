@@ -5,6 +5,7 @@ const placeholderSemitoneKeyHTML = '<div class="semitone-key placeholder-key"></
 var mouseClick = false;
 var activeKey = -1;
 var previousKey = -1;
+var containerScroll = -1;
 
 window.onload = function() {
 	MIDI.loadPlugin({
@@ -14,6 +15,13 @@ window.onload = function() {
 			console.log(state, progress);
 		},
 	});
+};
+
+document.onmousedown = function() {
+	mouseClick = true;
+};
+document.onmouseup = function() {
+	mouseClick = false;
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -48,20 +56,22 @@ function generatePiano(from, to) {
 	});
 
 	scrollToCenter(container);
+	new ResizeObserver(elementResize).observe(container)
+
+	container.onresize = (e) => {
+		scrollToCenter(container);
+	}
 }
 
-document.onmousedown = function() {
-	mouseClick = true;
-};
-document.onmouseup = function() {
-	mouseClick = false;
-};
+function scrollToCenter(element) {
+	console.log("resize", element)
+	element.scroll(element.scrollWidth / 2 - element.offsetWidth / 2, 
+			element.scrollHeight / 2 - element.offsetHeight / 2);
+	containerScroll = element.scrollWidth / 2 - element.offsetWidth / 2
+}
 
-function scrollToCenter(container) {
-	console.log("resize", container)
-	container.scrollBy(-999999, -999999);
-	container.scrollBy(container.scrollWidth / 2 - container.offsetWidth / 2, 
-			container.scrollHeight / 2 - container.offsetHeight / 2);
+function elementResize() {
+	scrollToCenter(document.getElementById("pianoContainer"));
 }
 
 function configureKey(element) {
@@ -74,13 +84,13 @@ function configureKey(element) {
 	});
 	element.addEventListener("mouseenter", (e) => {
 		if (mouseClick == true) {
-			newKey();
+			playNote(activeKey, 511);
 		}
 	})
 	element.addEventListener("mousedown", (e) => {
 		element.classList.add("active");
 		activeKey = element.innerHTML;
-		newKey();
+		playNote(activeKey, 511);
 	});
 	element.addEventListener("mouseup", (e) => {
 		element.classList.remove("active");
@@ -96,6 +106,3 @@ function playNote(note, velocity) {
 	MIDI.noteOn(0, note, velocity, 0);
 	MIDI.noteOff(0, note, 2.0);
 }
-function newKey() {
-	playNote(activeKey, 511);
-};
