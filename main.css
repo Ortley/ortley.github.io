@@ -95,20 +95,25 @@ html {
 	top: 0;
 	left: 0;
 	right: 0;
-	display: flexbox;
+	display: flex;
 	flex-direction: row;
 	border-bottom: 1px solid white;
 	padding: var(--margin-m);
 }
+
 .navbar-left, .navbar-right {
 	display: flex;
 	justify-content: flex-start;
-	width: max-content;
+	width: fit-content;
 	
 	gap: var(--margin-l);
-	padding-left: var(--margin-l);
+	
 }
 
+.navbar-right {
+	justify-self: flex-end;
+	margin-left: auto
+}
 
 .navbar-container > * {
 	align-content: center;
