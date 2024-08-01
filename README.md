@@ -1,5 +1,7 @@
 My website
 
 
-things i need to do:
- Do the login
+TODO:
+    idk
+    mess around with 3D?
+    yeah ill do that
