@@ -107,16 +107,15 @@ html {
 	width: fit-content;
 	
 	gap: var(--margin-l);
+	list-style-type: none;
 	
+	margin: 0;
+	padding: 0;
 }
 
 .navbar-right {
 	justify-self: flex-end;
 	margin-left: auto
-}
-
-.navbar-container > * {
-	align-content: center;
 }
 
 .navbar-item {

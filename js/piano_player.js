@@ -64,7 +64,6 @@ function generatePiano(from, to) {
 }
 
 function scrollToCenter(element) {
-	console.log("resize", element)
 	element.scroll(element.scrollWidth / 2 - element.offsetWidth / 2, 
 			element.scrollHeight / 2 - element.offsetHeight / 2);
 	containerScroll = element.scrollWidth / 2 - element.offsetWidth / 2
