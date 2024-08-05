@@ -1,0 +1,11 @@
+
+.tri-content {
+    margin: auto;
+    margin-top: 5%;
+    width: fit-content;
+    perspective: 0rem;
+    backface-visibility: hidden;
+    background-color: blue;
+    padding: 2px 15px;
+    border-radius: 5px;
+}
