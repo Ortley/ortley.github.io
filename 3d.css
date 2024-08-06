@@ -3,9 +3,9 @@
     margin: auto;
     margin-top: 5%;
     width: fit-content;
-    perspective: 0rem;
+    perspective: 200px;
     backface-visibility: hidden;
-    background-color: blue;
+    background-color: red;
     padding: 2px 15px;
     border-radius: 5px;
 }
