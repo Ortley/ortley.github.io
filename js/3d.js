@@ -27,7 +27,12 @@ document.addEventListener("mousemove", e => {
         z: vector.z / distance,
     }
     
-    let lightColour = "#ffffff";
+    let lightColour = {
+        r: 255,
+        g: 255,
+        b: 255,
+    };
+
     let lightVector = {
         x: 0 - origin.x,
         y: 0 - origin.y,
@@ -42,7 +47,18 @@ document.addEventListener("mousemove", e => {
 
     let dotProduct = vector.x * lightVector.x + vector.y * lightVector.y + vector.z * lightVector.z;
 
-    let albedo = "#0000ff";
+    let albedo = {
+        r: 255,
+        g: 255,
+        b: 255,
+    };
+
+
+    let finalColour = {
+        r: 255,
+        g: 255,
+        b: 255,
+    };
 
     let angle = {
         x: Math.atan2(vector.y, vector.z),
