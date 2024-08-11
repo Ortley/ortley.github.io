@@ -3,9 +3,11 @@
     margin: auto;
     margin-top: 5%;
     width: fit-content;
-    perspective: 200px;
+    
     backface-visibility: hidden;
     background-color: red;
     padding: 2px 15px;
     border-radius: 5px;
+    color: transparent;
+    perspective: -2px;
 }
