@@ -37,4 +37,15 @@ function start3D() {
         targetPosition.x = e.pageX;
         targetPosition.y = e.pageY;
     });
+
+    let test = new vector3(1, 2, 3);
+    console.log(test.x);
+    console.log(test.length);
+    
+    test.x = 5;
+    console.log(test.x);
+    console.log(test.length);
+    console.log(test.x);
+    
+    test.x = 6;
 };

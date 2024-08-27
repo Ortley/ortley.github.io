@@ -1,11 +1,33 @@
 class vector3 {
+    x; y; z; 
+    length = 0;
     constructor(x = 0, y = 0, z = 0) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.length = 0;
-        
+        this._recalculateValues();
     };
+
+    _recalculateValues() {
+        this.length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+        console.log("recalculate");
+    };
+
+    set x(val) {
+        console.log("what");
+        this._recalculateValues();
+    };
+    set y(val) {
+        this._recalculateValues();
+    };
+    set z(val) { 
+        this._recalculateValues();
+    };
+
+    get length() {
+        this._recalculateValues();
+        return this.length;
+    }
 
     static zero = new vector3(0, 0, 0);
     static one = new vector3(1, 1, 1);
