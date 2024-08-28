@@ -54,7 +54,7 @@
 
 @font-face {
 	font-family: "montserrat";
-	src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+	src: url(/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
 }
 
 html {
@@ -139,102 +139,4 @@ html {
 .navbar-item > a:hover {
 	background-color: var(--col-container);
 	border-color: var(--col-container-border-active);
-}
-
-.piano-container {
-	display: grid;
-	user-select: none;
-	color: black;
-	overflow-x: auto;
-
-	align-content: center;
-	margin: 5em auto 0;
-	
-	width: calc(var(--tone-key-width) * 23);
-	border-radius: 5px 5px 5px 5px;
-	padding-bottom: 10px;
-}
-
-.piano-container::-webkit-scrollbar {
-	border-radius: 1em;
-	background: none;
-	border: 0.05em solid white;
-	width: 1em;
-	height: 1em;
-}
-.piano-container::-webkit-scrollbar-thumb {
-	border-radius: 1em;
-	background-color: white;
-}
-
-.piano-tone {
-	pointer-events: none;
-	display: flex;
-	grid-row: 1;
-	grid-column: 1;
-	gap: 0.1em;
-	flex-direction: row;
-}
-
-
-.piano-semitone {
-	pointer-events: none;
-	display: flex;
-	grid-row: 1;
-	grid-column: 1;
-	gap: calc(var(--tone-key-width) - var(--semitone-key-width) + 0.1em);
-	flex-direction: row;
-}
-
-.tone-key {
-	pointer-events: all;
-	width: var(--tone-key-width);
-	height: var(--tone-key-height);
-	background-color: var(--col-tone);
-	border-radius: 0px 0px 5px 5px;
-	text-indent: 0.1em;
-	/* transition: all 0.05s ease-in; */
-	align-content: end;
-}
-
-
-.tone-key:first-child{
-	border-radius: 5px 0px 5px 5px;
-}
-.tone-key:last-child{
-	border-radius: 0px 5px 5px 5px;
-}
-
-.semitone-key {
-	pointer-events: all;
-	width: var(--semitone-key-width);
-	height: var(--semitone-key-height);
-	background-color: var(--col-semitone);
-	border-radius: 0px 0px 5px 5px;
-	transform: translateX(var(--semitone-key-spacing));
-	text-indent: 0.1em;
-	/* transition: all 0.05s ease-in; */
-	align-content: end;
-	color: white;
-}
-
-.placeholder-key {
-	visibility: hidden;
-}
-
-.semitone-key.hover {
-	background-color: var(--col-semitone-hover);
-}
-.tone-key.hover {
-	background-color: var(--col-tone-hover);
-}
-
-.semitone-key.active {
-	background-color: var(--col-semitone-active);
-}
-.tone-key.active {
-	background-color: var(--col-tone-active);
-}
-.active {
-	box-shadow: inset 5px white;
 }
