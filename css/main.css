@@ -101,21 +101,26 @@ html {
 	padding: var(--margin-m);
 }
 
+
+
 .navbar-left, .navbar-right {
 	display: flex;
 	justify-content: flex-start;
 	width: fit-content;
 	
-	gap: var(--margin-l);
+	
 	list-style-type: none;
 	
 	margin: 0;
 	padding: 0;
 }
-
+.navbar-left {
+	gap: var(--margin-l);
+}
 .navbar-right {
 	justify-self: flex-end;
-	margin-left: auto
+	margin-left: auto;
+	gap: var(--margin-s);
 }
 
 .navbar-item {
@@ -139,4 +144,8 @@ html {
 .navbar-item > a:hover {
 	background-color: var(--col-container);
 	border-color: var(--col-container-border-active);
+}
+
+img.link {
+	height: calc(1em + var(--margin-xxs));
 }
