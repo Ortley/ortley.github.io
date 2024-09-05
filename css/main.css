@@ -73,6 +73,11 @@ html {
 	visibility: visible;
 }
 
+.center-h {
+	margin: auto;
+	width: fit-content;
+}
+
 .content-highest {
 	color: var(--col-content-highest);
 	font-variation-settings: "wght" 700;
