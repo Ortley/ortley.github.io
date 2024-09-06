@@ -10,12 +10,15 @@ const NAVBAR = `<div class="navbar-container">
 					</ul>
 				</li>
 			</ul>
-			<ul class="navbar-right">
+			<ul class="navbar-right" style="color: white;">
+				<a class="content-highest navbar-item" href="https://github.com/Ortley/ortley.github.io">
+					<img class="link" src="images/icons/osi.svg" alt="website source code">
+				</a>
 				<a class="content-highest navbar-item" href="https://github.com/Ortley">
-					<img class="link" src="images/icons/github.png" alt="github logo">
+					<img class="link" src="images/icons/github.svg" alt="github logo">
 				</a>
 				<a class="content-highest navbar-item" href="https://steamcommunity.com/id/Ortley/">
-					<img class="link" src="images/icons/steam.png" alt="steam logo">
+					<img class="link" src="images/icons/steam.svg" alt="steam logo">
 				</a>
 			</ul>
 		</div>`
