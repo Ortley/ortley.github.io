@@ -1,27 +1,14 @@
 :root {
 	/* margins */
-	--margin-m: 1em;
+	--length-m: 1em;
 
-	--margin-s: calc(var(--margin-m) / 1.618);
-	--margin-xs: calc(var(--margin-s) / 1.618);
-	--margin-xxs: calc(var(--margin-xs) / 1.618);
+	--length-s: calc(var(--length-m) / 1.618);
+	--length-xs: calc(var(--length-s) / 1.618);
+	--length-xxs: calc(var(--length-xs) / 1.618);
 
-	--margin-l: calc(var(--margin-m) * 1.618);
-	--margin-xl: calc(var(--margin-l) * 1.618);
-	--margin-xxl: calc(var(--margin-xl) * 1.618);
-
-	/* borders */
-	--border-l: 1em;
-	--border-m: calc(var(--border-l) / 1.618);
-
-	--border-s: calc(var(--border-m) / 1.618);
-	--border-xs: calc(var(--border-s) / 1.618);
-	--border-xxs: calc(var(--border-xs) / 1.618);
-
-	--border-xl: calc(var(--border-l) * 1.618);
-	--border-xxl: calc(var(--border-xl) * 1.618);
-
-	--border-circle: 50%;
+	--length-l: calc(var(--length-m) * 1.618);
+	--length-xl: calc(var(--length-l) * 1.618);
+	--length-xxl: calc(var(--length-xl) * 1.618);
 
 	/* colours */
 	--col-background: hsl(0, 0%, 7%);
@@ -57,7 +44,7 @@
 	src: url(/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
 }
 
-html {
+* {
 	color: var(--col-content-regular);
 	font-family: montserrat;
 	font-variation-settings: "wght" 500;
@@ -68,7 +55,6 @@ html {
 .invisible {
 	visibility: hidden;
 }
-
 .visible {
 	visibility: visible;
 }
@@ -83,13 +69,11 @@ html {
 	font-variation-settings: "wght" 700;
 	font-size: x-large;
 }
-
 .content-regular {
 	color: var(--col-content-regular);
 	font-variation-settings: "wght" 500;
 	font-size: medium;
 }
-
 .content-lowest {
 	color: var(--col-content-lowest);
 	font-variation-settings: "wght" 300;
@@ -103,16 +87,14 @@ html {
 	display: flex;
 	flex-direction: row;
 	border-bottom: 1px solid white;
-	padding: var(--margin-m);
+	padding: var(--length-m) 0;
 }
 
-
-
-.navbar-left, .navbar-right {
+.navbar-left,
+.navbar-right {
 	display: flex;
 	justify-content: flex-start;
 	width: fit-content;
-	
 	
 	list-style-type: none;
 	
@@ -120,37 +102,34 @@ html {
 	padding: 0;
 }
 .navbar-left {
-	gap: var(--margin-l);
+	gap: var(--length-l);
 }
 .navbar-right {
 	justify-self: flex-end;
 	margin-left: auto;
-	gap: var(--margin-s);
+	gap: var(--length-s);
 }
 
 .navbar-item {
-	padding: var(--margin-xxs);
+	text-decoration-line: none;
+	padding: var(--length-xxs) var(--length-xs);
 }
 
-.navbar-item > a {
-	text-decoration-line: none;
-	color: var(--col-content-highest);
-
-	padding: var(--border-xs);
-	border-radius: var(--border-xxs);
+.navbar-box {
+	border-radius: var(--length-xxs);
 	border-width: 0.07em;
 	border-style: solid;
 	border-color: var(--col-container-border-inactive);
 
-	background-color: none;
+	background-color: transparent;
 	transition: all 0.2s;
 }
 
-.navbar-item > a:hover {
+.navbar-box:hover {
 	background-color: var(--col-container);
 	border-color: var(--col-container-border-active);
 }
 
 img.link {
-	height: calc(1em + var(--margin-xxs));
+	height: calc(1em + var(--length-xxs));
 }

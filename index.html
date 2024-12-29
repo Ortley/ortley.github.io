@@ -8,6 +8,49 @@
 		<title>Home</title>
 	</head>
 	<body>
-		<script src="js/page_setup.js"></script>
+		<div class="navbar-container">
+			<script>
+				let open = false;
+				function openDropdown() {
+					console.log("open");
+					Array.from(document.getElementsByClassName("experiment")).forEach(e => {
+						e.style.display = "inherit";
+						console.log(e.style.display);
+					})
+				}
+				function closeDropdown() {
+					console.log("close");
+					Array.from(document.getElementsByClassName("experiment")).forEach(e => {
+						console.log(e.display);
+						
+						e.style.display = "none";
+					})
+				}
+				function toggleDropdown() {
+					open = !open;
+					if (open == true) {
+						openDropdown();
+					} else {
+						closeDropdown();
+					}
+				}
+			</script>	
+			<div class="navbar-left">
+				<a class="content-highest navbar-item navbar-box" href="/">Home</a>
+				<button class="content-highest navbar-item navbar-box" onmousedown="toggleDropdown()">Experiments &#x2BC8;</button>
+				<a style="display: none;" class="content-highest navbar-item navbar-box experiment" href="/piano.html">Piano</a>
+			</div>
+			<div class="navbar-right">
+				<a class="content-highest navbar-item" href="https://github.com/Ortley/ortley.github.io">
+					<img class="link" src="images/icons/osi.svg" alt="website source code">
+				</a>
+				<a class="content-highest navbar-item" href="https://github.com/Ortley">
+					<img class="link" src="images/icons/github.svg" alt="github logo">
+				</a>
+				<a class="content-highest navbar-item" href="https://steamcommunity.com/id/Ortley/">
+					<img class="link" src="images/icons/steam.svg" alt="steam logo">
+				</a>
+			</div>
+		</div>
 	</body>
 </html>
