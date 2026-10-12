@@ -17,9 +17,6 @@ const NAVBAR = `<div class="navbar-container">
 				<a class="content-highest navbar-item" href="https://github.com/Ortley">
 					<img class="link" src="images/icons/github.svg" alt="github logo">
 				</a>
-				<a class="content-highest navbar-item" href="https://steamcommunity.com/id/Ortley/">
-					<img class="link" src="images/icons/steam.svg" alt="steam logo">
-				</a>
 			</ul>
 		</div>`
 
